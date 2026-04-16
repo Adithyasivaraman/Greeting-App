@@ -3,8 +3,7 @@ package com.bridgelabz.greetingapp.repository;
 import com.bridgelabz.greetingapp.model.Greeting;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Repository
@@ -23,6 +22,11 @@ public class GreetingRepository implements IGreetingRepository {
 
     @Override
     public Greeting findById(Long id) {
-        return storage.get(id);  // returns null if not found
+        return storage.get(id);
+    }
+
+    @Override
+    public List<Greeting> findAll() {
+        return new ArrayList<>(storage.values()); // KEY LINE 🔥
     }
 }

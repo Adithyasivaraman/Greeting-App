@@ -5,6 +5,8 @@ import com.bridgelabz.greetingapp.repository.IGreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GreetingService implements IGreetingService {
 
@@ -43,6 +45,17 @@ public class GreetingService implements IGreetingService {
 
     @Override
     public Greeting getGreetingById(Long id) {
-        return repository.findById(id);
+        Greeting greeting = repository.findById(id);
+
+        if (greeting == null) {
+            throw new RuntimeException("Greeting not found with ID: " + id);
+        }
+
+        return greeting;
+    }
+
+    @Override
+    public List<Greeting> getAllGreetings() {
+        return repository.findAll();
     }
 }
