@@ -15,9 +15,13 @@ public class GreetingController {
     private IGreetingService greetingService;
 
     @GetMapping
-    public Map<String, String> getGreeting() {
+    public Map<String, String> getGreeting(
+            @RequestParam(required = false) String firstName,
+            @RequestParam(required = false) String lastName) {
+
         Map<String, String> response = new HashMap<>();
-        response.put("message", greetingService.getGreetingMessage());
+        response.put("message",
+                greetingService.getCustomGreeting(firstName, lastName));
         return response;
     }
 }
