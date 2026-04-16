@@ -20,4 +20,9 @@ public class GreetingRepository implements IGreetingRepository {
         storage.put(id, greeting);
         return greeting;
     }
+
+    @Override
+    public Greeting findById(Long id) {
+        return storage.get(id);  // returns null if not found
+    }
 }

@@ -40,4 +40,9 @@ public class GreetingService implements IGreetingService {
         greeting.setMessage(message);
         return repository.save(greeting);
     }
+
+    @Override
+    public Greeting getGreetingById(Long id) {
+        return repository.findById(id);
+    }
 }

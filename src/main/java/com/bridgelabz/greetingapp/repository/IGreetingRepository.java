@@ -4,4 +4,5 @@ import com.bridgelabz.greetingapp.model.Greeting;
 
 public interface IGreetingRepository {
     Greeting save(Greeting greeting);
+    Greeting findById(Long id);   // NEW
 }
