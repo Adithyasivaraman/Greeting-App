@@ -9,4 +9,5 @@ public interface IGreetingService {
     Greeting saveGreeting(String message);
     Greeting getGreetingById(Long id);
     List<Greeting> getAllGreetings();   // NEW
+    Greeting updateGreeting(Long id, String message);
 }

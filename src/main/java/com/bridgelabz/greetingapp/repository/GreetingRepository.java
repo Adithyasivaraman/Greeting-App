@@ -27,6 +27,21 @@ public class GreetingRepository implements IGreetingRepository {
 
     @Override
     public List<Greeting> findAll() {
-        return new ArrayList<>(storage.values()); // KEY LINE 🔥
+        return new ArrayList<>(storage.values());
+    }
+
+    @Override
+    public Greeting update(Long id, String message) {
+
+        Greeting existing = storage.get(id);
+
+        if (existing == null) {
+            return null; // handled in service
+        }
+
+        existing.setMessage(message);
+        storage.put(id, existing); // overwrite
+
+        return existing;
     }
 }

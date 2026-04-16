@@ -58,4 +58,16 @@ public class GreetingService implements IGreetingService {
     public List<Greeting> getAllGreetings() {
         return repository.findAll();
     }
+
+    @Override
+    public Greeting updateGreeting(Long id, String message) {
+
+        Greeting updated = repository.update(id, message);
+
+        if (updated == null) {
+            throw new RuntimeException("Greeting not found with ID: " + id);
+        }
+
+        return updated;
+    }
 }

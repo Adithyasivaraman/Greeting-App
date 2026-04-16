@@ -6,5 +6,6 @@ import java.util.List;
 public interface IGreetingRepository {
     Greeting save(Greeting greeting);
     Greeting findById(Long id);
-    List<Greeting> findAll();   // NEW
+    List<Greeting> findAll();
+    Greeting update(Long id, String message);   // NEW
 }
