@@ -1,5 +1,7 @@
 package com.bridgelabz.greetingapp.controller;
 
+import com.bridgelabz.greetingapp.service.IGreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -9,35 +11,13 @@ import java.util.Map;
 @RequestMapping("/greeting")
 public class GreetingController {
 
-    // GET → Simple Hello
+    @Autowired
+    private IGreetingService greetingService;
+
     @GetMapping
     public Map<String, String> getGreeting() {
         Map<String, String> response = new HashMap<>();
-        response.put("message", "Hello World");
-        return response;
-    }
-
-    // POST → Custom message via request param
-    @PostMapping
-    public Map<String, String> postGreeting(@RequestParam(defaultValue = "World") String name) {
-        Map<String, String> response = new HashMap<>();
-        response.put("message", "Hello " + name);
-        return response;
-    }
-
-    // PUT → Update message
-    @PutMapping("/{name}")
-    public Map<String, String> putGreeting(@PathVariable String name) {
-        Map<String, String> response = new HashMap<>();
-        response.put("message", "Updated Hello " + name);
-        return response;
-    }
-
-    // DELETE → Simulated delete
-    @DeleteMapping("/{name}")
-    public Map<String, String> deleteGreeting(@PathVariable String name) {
-        Map<String, String> response = new HashMap<>();
-        response.put("message", "Deleted greeting for " + name);
+        response.put("message", greetingService.getGreetingMessage());
         return response;
     }
 }
