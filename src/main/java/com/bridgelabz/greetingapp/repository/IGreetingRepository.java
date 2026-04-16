@@ -8,4 +8,5 @@ public interface IGreetingRepository {
     Greeting findById(Long id);
     List<Greeting> findAll();
     Greeting update(Long id, String message);   // NEW
+    Greeting deleteById(Long id);
 }

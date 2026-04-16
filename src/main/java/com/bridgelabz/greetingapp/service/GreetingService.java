@@ -70,4 +70,16 @@ public class GreetingService implements IGreetingService {
 
         return updated;
     }
+
+    @Override
+    public Greeting deleteGreeting(Long id) {
+
+        Greeting deleted = repository.deleteById(id);
+
+        if (deleted == null) {
+            throw new RuntimeException("Greeting not found with ID: " + id);
+        }
+
+        return deleted;
+    }
 }

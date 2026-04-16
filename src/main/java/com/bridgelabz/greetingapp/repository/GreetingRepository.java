@@ -44,4 +44,17 @@ public class GreetingRepository implements IGreetingRepository {
 
         return existing;
     }
+
+    @Override
+    public Greeting deleteById(Long id) {
+
+        Greeting existing = storage.get(id);
+
+        if (existing == null) {
+            return null;
+        }
+
+        storage.remove(id);
+        return existing;
+    }
 }
